@@ -172,7 +172,7 @@ static inline int snd_mask_val(const struct snd_mask *mask)
     return 0;
 }
 
-static unsigned int agm_format_to_bits(enum pcm_format format)
+static unsigned int agm_format_to_bits(enum agm_media_format format)
 {
     switch (format) {
     case AGM_FORMAT_PCM_S32_LE:
@@ -906,7 +906,7 @@ PCM_PLUGIN_OPEN_FN(agm_pcm_plugin)
     struct agm_media_config *media_config;
     struct agm_buffer_config *buffer_config;
     uint64_t handle;
-    enum agm_session_mode sess_mode = AGM_SESSION_DEFAULT;
+    int sess_mode = AGM_SESSION_DEFAULT;
     int ret = 0, session_id = device;
     void *card_node, *pcm_node;
 
