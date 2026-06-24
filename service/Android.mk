@@ -21,6 +21,10 @@ LOCAL_CFLAGS        += -Wno-tautological-compare -Wno-macro-redefined -Wall
 LOCAL_CFLAGS        += -D_GNU_SOURCE -DACDB_PATH=\"/vendor/etc/acdbdata/\"
 LOCAL_CFLAGS        += -DACDB_DELTA_FILE_PATH="/data/vendor/audio/acdbdata/delta"
 
+ifeq ($(TARGET_HAS_QTI_OPTIMIZATIONS), true)
+LOCAL_CFLAGS       += -DQTI_OPTIMIZED
+endif
+
 LOCAL_C_INCLUDES    := $(LOCAL_PATH)/inc/public
 LOCAL_C_INCLUDES    += $(LOCAL_PATH)/inc/private
 
@@ -70,6 +74,10 @@ LOCAL_C_INCLUDES       += $(TOP)/external/expat/lib/expat.h
 LOCAL_SHARED_LIBRARIES += libaudio_log_utils
 LOCAL_SHARED_LIBRARIES += libexpat
 LOCAL_HEADER_LIBRARIES += libaudiologutils_headers
+endif
+
+ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DEVICE_PREPARE_SEQ)), true)
+    LOCAL_CFLAGS += -DENABLE_DEV_PREPARE_BEFORE_GRAPH_START_SEQ
 endif
 
 include $(BUILD_SHARED_LIBRARY)
