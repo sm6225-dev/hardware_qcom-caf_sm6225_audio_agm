@@ -13,7 +13,7 @@ cc_library_shared {
 
     header_libs: [
         "libagm_headers",
-        "libarosal_headers",
+        "libarpal_headers",
     ],
 
     shared_libs: [
@@ -39,7 +39,7 @@ cc_library_shared {
 
     header_libs: [
         "libagm_headers",
-        "libarosal_headers",
+        "libarpal_headers",
     ],
 
     shared_libs: [
@@ -69,7 +69,7 @@ cc_library_shared {
 
     header_libs: [
         "libagm_headers",
-        "libarosal_headers",
+        "libarpal_headers",
     ],
 
     shared_libs: [
